@@ -1,8 +1,11 @@
 {
   "name": "GraphQLBooks",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./server/app.js",
   "repository": "https://github.com/jarrodyellets/GraphQLBooks",
   "author": "jarrodyellets <jarrod524@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
