@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { graphql } from 'react-apollo';
-import { getAuthorsQuery } from '../queries/queries';
+import { graphql, compose } from 'react-apollo';
+import { getAuthorsQuery, AddBookMutation } from '../queries/queries';
 
 class AddBook extends Component {
   constructor(props){
@@ -13,7 +13,7 @@ class AddBook extends Component {
   }
 
   displayAuthor(){
-    let data = this.props.data;
+    let data = this.props.getAuthorsQuery;
     if(data.loading){
       return (
         <option disabled>Loading...</option>
@@ -31,7 +31,7 @@ class AddBook extends Component {
     e.preventDefault();
     console.log(this.state)
   }
-  
+
   render() {
     return (
       <form id="add-book" onSubmit={this.submitForm.bind(this)}>
@@ -56,4 +56,7 @@ class AddBook extends Component {
   }
 }
 
-export default graphql(getAuthorsQuery)(AddBook);
+export default compose(
+  graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+  graphql(AddBookMutation, { name: "AddBookMutation" })
+)(AddBook);
