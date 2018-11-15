@@ -13,12 +13,9 @@ class BookDetails extends Component {
           <p>{book.author.name}</p>
           <p>All books by this author:</p>
           <ul className="other-book">
-            {
-              book.author.books.map(item => {
-                // eslint-disable-next-line no-unused-expressions
-                <li key={item.id}>{item.name}</li>
-              })
-            }
+            { book.author.books.map(item => {
+              return <li key={item.id}>{item.name}</li>
+            })}
           </ul>
         </div>
       )
